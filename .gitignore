@@ -1,0 +1,23 @@
+# Vivado
+vivado_proj/
+*.log
+*.jou
+*.wdb
+*.wcfg
+*.cache
+Xilinx/
+.hw/
+.ip_user_files/
+*.backup.jou
+*.backup.log
+
+# 仿真
+xsim.dir/
+*.vcd
+*.vvp
+work/
+
+# 编辑器/系统
+*.swp
+.DS_Store
+Thumbs.db

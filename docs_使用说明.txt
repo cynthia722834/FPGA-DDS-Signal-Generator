@@ -1,0 +1,44 @@
+============================================
+ 基于 Artix-7 FPGA 的多功能 DDS 数字信号发生器
+ 代码使用说明
+============================================
+
+一、开发环境
+  * Vivado 2023.1 ML Standard（或更高版本）
+  * 硬件平台：硬木课堂 ACE1-AR7 开发板
+    （Xilinx Artix-7 XC7A35TFTG256-2）
+  * 代码语言：Verilog HDL（全手写 RTL，零 IP 核）
+
+二、目录结构
+  src/                全部 RTL 源文件（10 个模块）
+  xdc/top_dds.xdc     引脚约束与时序约束
+  sim/tb_dds.v        仿真测试平台（20 余项测试）
+  mem/                正弦查找表初始化文件、XADC 仿真激励
+  docs/               设计说明文档
+  build_project.tcl   一键构建脚本（综合+实现+比特流）
+  program_board.tcl   JTAG 烧录脚本
+  sim_run.tcl         仿真运行脚本
+
+三、构建与烧录
+  1. 打开 Vivado Tcl Console（或命令行）
+  2. 构建：vivado -mode batch -source D:/FPGA_DDS/build_project.tcl
+     生成的比特流位于 vivado_proj/dds_signal_gen.runs/impl_1/top_dds.bit
+  3. 烧录：连接板卡 JTAG 口后执行
+     vivado -mode batch -source D:/FPGA_DDS/program_board.tcl
+
+四、功能操作说明（拨码开关 SW0~SW10，矩阵键盘第一行 4 键）
+  SW1:0  波形选择（正弦/方波/三角/锯齿）
+  SW3:2  幅度档位（25%/50%/75%/100%）
+  SW5:4  双通道相位差（0/90/180/270 度）
+  SW6    显示模式低bit（配合 SW8：00=波形 01=李萨如 1x=示波器）
+  SW7    自动扫频
+  SW8    显示模式高bit
+  SW9    旋律播放开关
+  SW10   歌曲切换（小星星/生日快乐）
+  KEY0   频率+（长按连加）  KEY1 频率-（长按连减）
+  KEY2   步进档位切换        KEY3 复位
+
+五、主要技术指标
+  频率范围 100Hz~10MHz；频率分辨率 0.012Hz；
+  双通道 DAC 输出（1MHz 采样率）；
+  VGA 640x480@60Hz 三模式显示；XADC 12 位采集回显。
