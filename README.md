@@ -1,6 +1,6 @@
 # 基于 Artix-7 FPGA 的多功能 DDS 数字信号发生器
 
-基于 Xilinx Artix-7 FPGA 的多功能 DDS（直接数字频率合成）数字信号发生器，全部功能模块均为**手写 Verilog RTL 实现，零 IP 核依赖**。
+基于 Xilinx Artix-7 FPGA 的多功能 DDS（直接数字频率合成）数字信号发生器，全部功能模块均为**手写 Verilog RTL 实现，全自主设计**。
 
 ## 功能特性
 
@@ -16,7 +16,7 @@
 
 ## 硬件平台
 
-- 开发板：硬木课堂 ACE1-AR7（Xilinx Artix-7 XC7A35TFTG256-2）
+- 开发板：Xilinx Artix-7 XC7A35T 实验开发板（与 EGO1 等同系列平台，AMD 7 系列 FPGA）
 - 板载资源：50MHz 晶振、6 位共阴数码管、12 路拨码开关、17 LED、4×4 矩阵键盘、VGA 接口（RGB444）、TLC7528 双通道 DAC、XADC、无源蜂鸣器
 
 ## 开发环境
